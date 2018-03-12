@@ -1,0 +1,82 @@
+[{
+  "leng" : 4,
+  "nav"  : [{
+    "path" : "manage/leave",
+    "main" : "leave",
+    "text" : "請假申請",
+    "sub"  : [
+        {
+          "path" : "form",
+          "text" : "請假申請"
+          }
+      ]
+    },
+  {
+    "path" : "manage/pos",
+    "main" : "pos",
+    "text" : "訂單系統",
+    "sub"  : [
+        {
+          "path" : "list",
+          "text" : "訂餐紀錄"
+          },
+        {
+          "path" : "initiated",
+          "text" : "發起流程"
+          },
+        {
+          "path" : "program",
+          "text" : "新增方案"
+          }
+      ]
+    },
+  {
+    "path" : "manage/change",
+    "main" : "change",
+    "text" : "各項異動",
+    "sub"  : [
+        {
+          "path" : "resign",
+          "text" : "離職申請"
+          },
+        {
+          "path" : "property",
+          "text" : "資產異動"
+          }
+      ]
+    },
+  {
+    "path" : "manage/personnel",
+    "main" : "personnel",
+    "text" : "人事管理",
+    "sub"  : [
+        {
+          "path" : "member",
+          "text" : "人員查詢"
+          },
+        {
+          "path" : "salary",
+          "text" : "薪資查詢"
+          },
+        {
+          "path" : "addmember",
+          "text" : "新增人員"
+          }
+      ]
+    },
+  {
+    "path" : "manage/user",
+    "main" : "user",
+    "text" : "個人設定",
+    "sub"  : [
+        {
+          "path" : "pwd",
+          "text" : "密碼設定"
+          },
+        {
+          "path" : "info",
+          "text" : "常見問題"
+          }
+      ]
+    }]
+}]

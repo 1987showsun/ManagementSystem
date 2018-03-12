@@ -1,0 +1,580 @@
+@import "./setup.scss";
+@import "./list.scss";
+
+ul{
+  list-style-type: none;
+}
+
+a{
+  text-decoration: none;
+  img{
+    border : none;
+  }
+}
+
+button,span{
+  display: flex;
+  align-items: center;
+  outline: none;
+  -webkit-appearance:none;
+  border: none;
+  &.btn{
+    width           : 100%;
+    max-width       : 120px;
+    height          : 35px;
+    background      : #ccc;
+    font-size       : 0.8em;
+    justify-content : center;
+    cursor          : pointer;
+    @include radius(4px);
+    &.remove{
+      width              : 35px;
+      background         : #F44336;
+      color              : #fff;
+      background-repeat  : no-repeat;
+      background-image   : url($iconRemovefff);
+      background-size    : 50%;
+      background-position: center;
+    }
+    &.add{
+      background-color: #37b358;
+      color: #fff;
+    }
+    &.submit{
+      background-color: #4285f4;
+      color: #fff;
+    }
+    >.icon{
+      width               : 20px;
+      height              : 20px;
+      display             : inline-flex;
+      margin-right        : 5px;
+      background-position : center;
+      background-repeat   : no-repeat;
+      background-size     : 70%;
+      &.add{
+        &[data-icon-color="fff"]{
+          background-image: url($iconAddfff);
+        }
+      }
+    }
+  }
+}
+
+*{
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-user-select: auto;
+  -webkit-user-select: auto;
+  margin: 0px;
+  padding: 0px;
+}
+
+body{
+  font-size: 100%;
+}
+
+#wrapper{
+  width: 100%;
+  min-height: 100vh;
+}
+
+header{
+  width           : 100%;
+  height          : 70px;
+  padding         : 10px 20px;
+  display         : flex;
+  align-items     : center;
+  justify-content : space-between;
+  background      : $mainColor;
+  .logo{
+    height : 100%;
+    display: inline-flex;
+    align-items: center;
+    img{
+      height: 100%;
+    }
+    a{
+      height: 100%;
+    }
+  }
+  a{
+    color: #fff;
+  }
+  &[data-position="fixed"]{
+    position  : fixed;
+    z-index   : 100;
+    top       : 0px;
+    &+main{
+      padding-top : 70px;
+    }
+  }
+}
+
+nav{
+  &.mainNav{
+    height  : 100%;
+    display : inline-flex;
+    ul{
+      display: flex;
+      >li{
+        a{
+          width       : 100%;
+          height      : 100%;
+          display     : flex;
+          padding     : 0px 10px;
+          align-items : center;
+          font-size   : 1em;
+          font-weight : bold;
+          span.img{
+            width            : 35px;
+            height           : 35px;
+            display          : inline-flex;
+            align-items      : center;
+            background-color : #fff;
+            overflow         : hidden;
+            margin-right     : 10px;
+            @include radius(100px);
+            img{
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  /* 垂直 */
+  &[data-orientation="portrait"]{
+    width      : 100%;
+    min-width  : 300px;
+    height     : 100%;
+    display    : inline-flex;
+    flex-direction: column;
+    &.mainNav{
+      ul{
+        width: 100%;
+        &.nav{
+          flex-direction: column;
+          >li{
+            height: 40px;
+            display: inline-flex;
+          }
+        }
+      }
+    }
+  }
+  /* 橫向 */
+  &[data-orientation="landscape"]{
+    height: 100%;
+    display: inline-flex;
+    &.mainNav{
+      ul{
+        height: 100%;
+        >li{
+          height: 100%;
+          display: inline-flex;
+          a{
+            padding     : 0px 20px;
+          }
+        }
+      }
+    }
+  }
+  &[data-position="fixed"]{
+    position  : fixed;
+    top       : 0px;
+  }
+}
+
+main{
+  width           : 100%;
+  display         : flex;
+  flex-direction  : column;
+  >.content{
+    width   : 100%;
+    display : flex;
+    justify-content: space-between;
+    >nav,>.main,>aside{
+      min-height        : 300px;
+      padding           : 5px 10px;
+      display           : inline-flex;
+    }
+    >nav,>aside{
+      min-width: 250px;
+    }
+    >.main{
+      flex-direction  : column;
+      >.mainBlock{
+        width   : 100%;
+        display : flex;
+        padding : 10px 0px 0px 0px;
+        flex-direction: column;
+        &:first-child{
+          padding-top: 0px;
+        }
+      }
+    }
+    &[data-column="1"]{
+      >nav,>aside{display: none;}
+      >.main{
+        width: 100%;
+      }
+    }
+    &[data-column="2"]{
+      >nav{
+        width: 20%;
+      }
+      >.main{
+        width: 80%;
+      }
+      >aside{
+        width: 20%;
+      }
+    }
+    &[data-column="3"]{
+      >nav{
+        width: 20%;
+      }
+      >.main{
+        width: 50%;
+      }
+      >aside{
+        width: 30%;
+      }
+    }
+    &[data-maxWidth=true]{
+      max-width : $maxWidth;
+      margin    : auto;
+    }
+  }
+}
+
+.title{
+  &.main{
+    width       : 100%;
+    height      : 40px;
+    display     : flex;
+    align-items : center;
+    justify-content: space-between;
+    h2,h3{
+      display   : flex;
+      font-size : 1.1em;
+    }
+    a{
+      display   : flex;
+      font-size : 0.8em;
+    }
+    span{
+      &.img{
+        display: flex;
+      }
+    }
+  }
+}
+
+#kv{
+  width: 100%;
+  min-height: 320px;
+  background-color: #efefef;
+}
+
+form{
+  button{
+    @include radius(5px);
+    &[type="submit"]{
+      width     : 100%;
+      min-width : 160px;
+      height    : 30px;
+      border    : none;
+      color     : #fff;
+      font-size : 0.9em;
+      background-color: #f36;
+    }
+  }
+  .inputBorder{
+    height      : 35px;
+    display     : inline-flex;
+    align-items : center;
+    border      : 1px solid #ccc;
+    background  : #fff;
+    padding     : 5px;
+    margin-right: 10px;
+    position    : relative;
+    &:last-child{
+      margin-right: 0px;
+    }
+    input,span,select{
+      -webkit-appearance: none;
+      height      : 100%;
+      display     : inline-flex;
+      align-items : center;
+      border      : none;
+      outline     : none;
+      font-size   : 0.8em;
+      background-color: transparent;
+      &.yy{width: 50px; text-align: center;}
+      &.mm{width: 30px; text-align: center;}
+      &.dd{width: 30px; text-align: center;}
+      &.hh{width: 30px; text-align: center;}
+      &.min{width: 30px; text-align: center;}
+      &[type="file"]{opacity: 0;}
+      &.shareWidth{ width: 300px;}
+      &.number{ width: 40px; text-align: right;}
+      &.program{ width: 400px; }
+      &.name{min-width: 100px;}
+    }
+    select{
+      min-width           : 180px;
+      background-image    : url($iconSelectDown);
+      background-position : 99% center;
+      background-repeat   : no-repeat;
+      background-size     : 10px;
+      cursor              : pointer;
+    }
+    .touchBlock{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 1;
+      top: 0px;
+      left: 0px;
+    }
+    >span{
+      min-width : 15px;
+    }
+    >.option{
+      height          : 100%;
+      padding         : 2px 5px;
+      margin-right    : 5px;
+      display         : inline-flex;
+      align-items     : center;
+      font-weight     : bold;
+      font-size       : 0.7em;
+      color           : #666;
+      background-color: #efefef;
+      position        : relative;
+      z-index         : 2;
+      span{
+        &.close{
+          width            : 12px;
+          height           : 12px;
+          display          : inline-flex;
+          cursor           : pointer;
+          margin-right     : 5px;
+          background-repeat: no-repeat;
+          background-size  : 80%;
+          background-image : url($iconClose666);
+          background-position: center;
+        }
+      }
+      &:last-child{
+        margin-right: 0px;
+      }
+    }
+    [ data-textCenter="true"]{
+      text-align: center;
+      justify-content: center;
+    }
+    &.program{ width: 400px; }
+  }
+  >ul{
+    width     : 100%;
+    >li{
+      width   : 100%;
+      padding : 5px 0px;
+      >ul{
+        height      : 100%;
+        display     : flex;
+        align-items : center;
+        >li{
+          display: inline-flex;
+          align-items: flex-start;
+          position: relative;
+          flex-direction: column;
+          &:first-child{
+            min-width   : 100px;
+          }
+          &:last-child{
+            width: 100%;
+          }
+          >span{
+            padding   : 0px 10px;
+          }
+        }
+      }
+    }
+  }
+  .column{
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  .selsct{
+    width       : 100%;
+    border      : 1px solid #ccc;
+    position    : absolute;
+    z-index     : 2;
+    top         : 35px;
+    left        : 0px;
+    background  : #efefef;
+    display     : none;
+    &.true{
+      display: flex;
+    }
+  }
+  span{
+    /*&.icon{
+      width  : 20px;
+      height : 20px;
+      border : 1px solid #000;
+      cursor : pointer;
+      align-items: center;
+      justify-content: center;
+      @include radius(20px);
+      margin-left: 10px;
+    }*/
+  }
+}
+
+.popup{
+  width           : 100%;
+  height          : 100%;
+  display         : none;
+  align-items     : center;
+  justify-content : center;
+  position        : fixed;
+  z-index         : 100;
+  top             : 0px;
+  left            : 0px;
+  &.true{
+    display  : flex;
+    >.null{
+      width  : 100%;
+      height : 100%;
+      background-color: rgba(0,0,0,.5);
+      position: absolute;
+      z-index: 0;
+      top: 0px;
+      left: 0px;
+    }
+    >.popupConent{
+      width      : 80%;
+      height     : 80%;
+      max-height : 500px;
+      max-width  : 720px;
+      background-color: #fff;
+      position   : relative;
+      z-index    : 2;
+      @include radius(15px);
+      .close{
+        width               : 25px;
+        height              : 25px;
+        display             : block;
+        background-image    : url($iconCloseWhite);
+        background-color    : #000;
+        background-position : center;
+        background-repeat   : no-repeat;
+        background-size     : 50%;
+        position            : absolute;
+        z-index             : 2;
+        top                 : 5px;
+        right               : 5px;
+        cursor              : pointer;
+        @include radius(100px);
+      }
+      .in{
+        width     : 100%;
+        height    : 100%;
+        display   : flex;
+        padding   : 10px;
+        flex-wrap : wrap;
+        overflow  : auto;
+        .title{
+          display: flex;
+          margin : 20px 0px 10px 0px;
+        }
+      }
+    }
+  }
+}
+
+.note{
+  width       : 100%;
+  height      : 100%;
+  position    : fixed;
+  z-index     : 100;
+  top         : 0px;
+  left        : 0px;
+  display     : none;
+  align-items : center;
+  justify-content: center;
+  &.true{
+    display: flex;
+  }
+  >.null{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.7);
+    position: absolute;
+    z-index: 0;
+    top: 0px;
+    left: 0px;
+  }
+  >.noteContent{
+    min-width  : 200px;
+    padding    : 10px;
+    display    : block;
+    position   : relative;
+    z-index    : 2;
+    background-color: #fff;
+    @include radius(15px);
+    .text{
+      display: block;
+      margin-bottom: 10px;
+      font-size: 0.8em;
+      text-align: center;
+    }
+    .action{
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+footer{
+  width   : 100%;
+  display : flex;
+  flex-direction: column;
+  .footerWrap{
+    width   : 100%;
+    display : flex;
+    padding : 10px 0px;
+    justify-content: space-between;
+    &[data-column="2"]{
+      >.left{
+        width: 30%;
+      }
+      >.right{
+        width: 30%;
+      }
+    }
+    &[data-column="3"]{
+      >.left{
+        width: 20%;
+      }
+      >.center{
+        width: 60%;
+      }
+      >.right{
+        width: 20%;
+      }
+    }
+  }
+  small{
+    text-align: center;
+  }
+}

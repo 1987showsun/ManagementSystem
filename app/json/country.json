@@ -1,0 +1,23 @@
+[
+  {
+    "country" : "TW",
+    "lang"    : "zh-TW",
+    "path"    : "tw"
+  },{
+    "country" : "CN",
+    "lang"    : "zh-CN",
+    "path"    : "cn"
+  },{
+    "country" : "AU",
+    "lang"    : "en-AU",
+    "path"    : "au"
+  },{
+    "country" : "US",
+    "lang"    : "en-US",
+    "path"    : "en"
+  },{
+    "country" : "IE",
+    "lang"    : "en-IE",
+    "path"    : "ie"
+  }
+]
